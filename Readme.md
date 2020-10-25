@@ -44,3 +44,35 @@
 - Write a compiler from scratch - [Series](https://www.youtube.com/playlist?list=PLRAdsfhKI4OWNOSfS7EUu5GRAVmze1t2y)
 
 ## System design
+
+
+## Must read papers
+
+- [Google bigtable](https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf)
+
+
+### Exaustive list
+
+- [Link](https://github.com/papers-we-love/papers-we-love)
+
+## Must read blogs
+
+- Uber engineering - [Microservice architecture](https://eng.uber.com/microservice-architecture/)
+- Uber engineering - [Moving money at scale](https://eng.uber.com/money-scale-strong-data/)
+- Zerodha blog on engineering [this one](https://zerodha.tech/blog/scaling-with-common-sense/) and [this one](https://zerodha.tech/blog/hello-world/)
+
+## Microservices
+
+- API design guidelines by Microsoft - [Link](https://github.com/microsoft/api-guidelines)
+- Microservices patterns - [Link](https://microservices.io/patterns/index.html)
+
+## Design patterns 
+
+- Design patterns for humans [Link](https://github.com/kamranahmedse/design-patterns-for-humans)
+- All patterns in Java [Link](https://github.com/iluwatar/java-design-patterns) 
+
+## Best engineering principles
+
+- [Link](https://java-design-patterns.com/principles/)
+
+
