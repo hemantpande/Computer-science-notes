@@ -1,12 +1,18 @@
 Operating systems notes
 
 1. There are many programs on Hard disk. Programs have to be copied in RAM for them to be executed. If there are 500 programs on disk, we may be able to copy only 50 programs in RAM. Which program to copy and keep is decided by a sub-routine or function within the operating system code, called as Long term scheduler.
+
 	* Long term scheduler --> selection of programs from Disk to RAM
+
 2. In short OS is doing resource allocation/resource management. If 100 programs are trying to access the RAM, Resource manager is managing the RAM to decide which 50 of those programs gets access to the RAM.
+
 3. Lets say there are 2 processes/programs P1 and P2, both trying to access (a resource) RAM, which amoung those will be selected to execute is decided by *Short term Scheduler*
+
 4. In short,
+
 	Long term scheduler = to decide which programs should be selected to execute from Disk --> RAM
 	Short term scheduler = to decide which program within the RAM should be executed first by --> CPU
+
 5. Operating system is a resource manager. Operating system program is always in RAM. Whenever we boot the computer, OS code is loaded into the RAM. Once the OS program is executed, then that memory is freed in RAM.
 		
 ```
@@ -38,31 +44,31 @@ Operating systems notes
 
 	For ex, lets say we are doing 2 + 3.
 
-	a. First 2 will be pushed to Keyboard buffer, then it will be pushed to RAM
-	b. Then Operand will be pushed
-	c. Then 3 will be pushed.
-	d. Once all 3 are pushed to the RAM, CPU will load them into it's own registers.
-	e. CPU will then push it to the RAM
-	f. From RAM it will be pushed to one more I/O device buffer, called monitor buffer.
-	g. From monitor's buffer, it will be displayed to the monitor.
+	- First 2 will be pushed to Keyboard buffer, then it will be pushed to RAM
+	- Then Operand will be pushed
+	- Then 3 will be pushed.
+	- Once all 3 are pushed to the RAM, CPU will load them into it's own registers.
+	- CPU will then push it to the RAM
+	- From RAM it will be pushed to one more I/O device buffer, called monitor buffer.
+	- From monitor's buffer, it will be displayed to the monitor.
 
 7. What is the difference between a program and a process?
 
-	A program is an executable physically present on the Hard disk, for ex, GoogleChrome.exe. When the exe is double cliced :
+	A program is an executable physically present on the Hard disk, for ex, GoogleChrome.exe. When the exe is double clicked :
 
-	a. CPU will check of the program is already present in RAM
-	b. If not, a copy of the executable is created and loaded into the RAM in user's space.
-	c. From there it is loaded into the CPU for execution
+	- CPU will check of the program is already present in RAM
+	- If not, a copy of the executable is created and loaded into the RAM in user's space.
+	- From there it is loaded into the CPU for execution
 
 	A program can have one of the below states :
 
-	a. New state - When it is loaded into RAM
-	b. Ready state - When it is ready to be loaded into CPU
-	c. Running state - When it is executing
-	d. I/O state - When it is waiting for an I/O operation to complete
-	e. Terminated state - When it's execution is completed and it is removed from RAM
-	f. Suspended ready state - <Revisit>
-	g. Suspended wait state - <Revisit>
+	- New state - When it is loaded into RAM
+	- Ready state - When it is ready to be loaded into CPU
+	- Running state - When it is executing
+	- I/O state - When it is waiting for an I/O operation to complete
+	- Terminated state - When it's execution is completed and it is removed from RAM
+	- Suspended ready state - <Revisit>
+	- Suspended wait state - <Revisit>
 
 8. Degree of multiprogramming - Maximum number of processes that can be placed in the RAM
 	
@@ -89,9 +95,9 @@ Operating systems notes
 
 9. Types of Operating systems
 
-	a. Batch operating systems - Degree of multiprogramming = 1
-	b. Multiprogramming OS -  Degree of multiprogramming > 1 [Concurrent processing]
-	c. Multiprocessing OS - More than 1 CPU. Till now we have considered only 1 CPU model. [Parallel processing]
+	- Batch operating systems - Degree of multiprogramming = 1
+	- Multiprogramming OS -  Degree of multiprogramming > 1 [Concurrent processing]
+	- Multiprocessing OS - More than 1 CPU. Till now we have considered only 1 CPU model. [Parallel processing]
 
 	CPU efficiency = Useful time of CPU/Total time of CPU
 	Useful time of CPU = time when it is executing processes.
@@ -100,10 +106,10 @@ Operating systems notes
 
 	Let's look at the anotomy of a process.
 
-	a. Every program has a lot of functions, all functions are loaded in RAM.
-	b. The order of function execution is maintained on a STACK.
-	c. All variables initiated at runtime are allocated on a HEAP.
-	d. The block of RAM allocated to each process is called as "Process control block" (PCB)
+	- Every program has a lot of functions, all functions are loaded in RAM.
+	- The order of function execution is maintained on a STACK.
+	- All variables initiated at runtime are allocated on a HEAP.
+	- The block of RAM allocated to each process is called as "Process control block" (PCB)
 
 ```
 	Process control block
@@ -135,7 +141,7 @@ Operating systems notes
 
 11. Let's say there are 3 processes P1, P2 and P3 in ready state, waiting to be executed by the CPU. The Scheduler code in the OS will decide, which process will be executed first by CPU. There are various algorithms based on which the scheduler takes this decision. We will discuss them below - 
 	
-	a. First come first serve algorithm - It says the process which was created first in the RAM will be selected by the CPU to be executed first.
+	- First come first serve algorithm - It says the process which was created first in the RAM will be selected by the CPU to be executed first.
 
 	```
 		---------
@@ -150,7 +156,7 @@ Operating systems notes
 		---------
 	```
 
-	b. Shortest job first algorithm - This algorithm says, the job with the shortest amount of time should be executed first. Let's say, 
+	- Shortest job first algorithm - This algorithm says, the job with the shortest amount of time should be executed first. Let's say, 
 
 		P1 - takes - 5 ns to execute
 		P2 - takes - 3 ns to execute
@@ -173,22 +179,22 @@ Operating systems notes
 
 	For this purpose, we use the following attributes of the process - 
 
-		1. Process Id - Unique ID given to each process.
-		2. Program counter - This will store the location of the last instruction that was executed by the CPU for this process. This is the value from program counter register present in CPU. Next time P2 runs, it will start the execution from this instruction.
-		3. Process state - When a process is PRE-EMPTIED, OS stores all the values of variables/state from CPU's register. This data from CPU registers is stored in the General purpose registers in the process. Next time then P2 runs, the CPU registers are again filled with these general purpose registers.
-		4. General purpose registers - Stated above.
-		5. Priority
-		6. List of open files
-		7. List of open devices - Suppose P3 is printing a page, and it is pre-emptied, next time it runs it again starts printing from where it left before being pre-emptied. 
-		8. Protection - The stack and heap space in the process, should not be accessible by other processes.
+		- Process Id - Unique ID given to each process.
+		- Program counter - This will store the location of the last instruction that was executed by the CPU for this process. This is the value from program counter register present in CPU. Next time P2 runs, it will start the execution from this instruction.
+		- Process state - When a process is PRE-EMPTIED, OS stores all the values of variables/state from CPU's register. This data from CPU registers is stored in the General purpose registers in the process. Next time then P2 runs, the CPU registers are again filled with these general purpose registers.
+		- General purpose registers - Stated above.
+		- Priority
+		- List of open files
+		- List of open devices - Suppose P3 is printing a page, and it is pre-emptied, next time it runs it again starts printing from where it left before being pre-emptied. 
+		- Protection - The stack and heap space in the process, should not be accessible by other processes.
 
 12. Context of a Process - The Program control block along with the process attributes are collectively called as the "Context of the process" or execution context.
 
 13. Types of scheduler
 	
-	a. Long term scheduler - Decides which processes should be moved from disk to RAM for execution
-	b. Short term scheduler - Decides which process should be moved from RAM to CPU for execution.
-	b. Medium term scheduler - Let's say that there are 4 processes in the CPU. Their priorities are as below. Note that the capacity of RAM is only 4 processes.
+	- Long term scheduler - Decides which processes should be moved from disk to RAM for execution
+	- Short term scheduler - Decides which process should be moved from RAM to CPU for execution.
+	- Medium term scheduler - Let's say that there are 4 processes in the CPU. Their priorities are as below. Note that the capacity of RAM is only 4 processes.
 
 	```
 		RAM													DISK
@@ -216,11 +222,11 @@ Operating systems notes
 		```
 
 	Point in time
-		a. Arrival time - Point in time at which the process has arrived from Hard disk to the RAM
-		b. Completion time - Point in time when the process has completed the execution.
+		- Arrival time - Point in time at which the process has arrived from Hard disk to the RAM
+		- Completion time - Point in time when the process has completed the execution.
 
 	Duration in time
-		c. Turn around time = Completion time - Arrival time, i.e total time spent by the process in the RAM and CPU combined.
+		- Turn around time = Completion time - Arrival time, i.e total time spent by the process in the RAM and CPU combined.
 
 ```
 			      P1	    P2				P1					P3				P1
@@ -248,8 +254,8 @@ Operating systems notes
 16. Scheduling algorithms
 	
 	2 types : 
-		a. Pre-emptive scheduling algorithm
-		b. Non pre-emptive scheduling algorithm
+		- Pre-emptive scheduling algorithm
+		- Non pre-emptive scheduling algorithm
 
 ```
 			---------
@@ -301,9 +307,9 @@ Operating systems notes
 
 17. Shortest job first scheduling algorithm (SJF)
 	
-	a. It is a non-pre-emptive algorithm
-	b. The process with the shortest burst time will be given higher priority.
-	c. This is a priority based algorithm.
+	- It is a non-pre-emptive algorithm
+	- The process with the shortest burst time will be given higher priority.
+	- This is a priority based algorithm.
 
 ```
 	Example, 
@@ -362,7 +368,7 @@ Operating systems notes
 
 18. Shortest remaining time first (SRTF) scheduling algorithm
 
-	a. SRTF is a pre-emptive type of scheduling algorithm. This is the only difference between SJF and SRTF.
+	- SRTF is a pre-emptive type of scheduling algorithm. This is the only difference between SJF and SRTF.
 		
 	In SRTF the process which has shortest burst time is give highest priority. If the current executing process has higher remaining burst time, it will be pre-emptied and the one with highest priority will be executed.
 
@@ -437,9 +443,9 @@ Operating systems notes
 
 20. First come first served (FCFS) scheduling algorithm
 
-	a. The process which has the least arrival time will be scheduled first.
-	b. It is a non-pre-emptive scheduling algorithm.
-	c. It is not a priority based scheduling algorithm.
+	- The process which has the least arrival time will be scheduled first.
+	- It is a non-pre-emptive scheduling algorithm.
+	- It is not a priority based scheduling algorithm.
 
 ```
 	|-----------|-------------|-----------|
