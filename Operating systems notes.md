@@ -9,6 +9,7 @@ Operating systems notes
 	Short term scheduler = to decide which program within the RAM should be executed first by --> CPU
 5. Operating system is a resource manager. Operating system program is always in RAM. Whenever we boot the computer, OS code is loaded into the RAM. Once the OS program is executed, then that memory is freed in RAM.
 		
+```
 		RAM			
 		---------					---------
 		|  OS	|					|		|
@@ -31,9 +32,12 @@ Operating systems notes
 		---------			---------
 		Keyboard			Printer
 
+```
+
 6. Each IO device has a buffer associated with it. When we press "A" on a keyboard, then the ascii code of "A" is pushed to the device buffer of the Keyboard. It is then moved from the device buffer to the RAM for execution.
 
-For ex, lets say we are doing 2 + 3.
+	For ex, lets say we are doing 2 + 3.
+
 	a. First 2 will be pushed to Keyboard buffer, then it will be pushed to RAM
 	b. Then Operand will be pushed
 	c. Then 3 will be pushed.
@@ -43,12 +47,15 @@ For ex, lets say we are doing 2 + 3.
 	g. From monitor's buffer, it will be displayed to the monitor.
 
 7. What is the difference between a program and a process?
-A program is an executable physically present on the Hard disk, for ex, GoogleChrome.exe. When the exe is double cliced : 
+
+	A program is an executable physically present on the Hard disk, for ex, GoogleChrome.exe. When the exe is double cliced :
+
 	a. CPU will check of the program is already present in RAM
 	b. If not, a copy of the executable is created and loaded into the RAM in user's space.
 	c. From there it is loaded into the CPU for execution
 
-A program can have one of the below states :
+	A program can have one of the below states :
+
 	a. New state - When it is loaded into RAM
 	b. Ready state - When it is ready to be loaded into CPU
 	c. Running state - When it is executing
@@ -58,39 +65,47 @@ A program can have one of the below states :
 	g. Suspended wait state - <Revisit>
 
 8. Degree of multiprogramming - Maximum number of processes that can be placed in the RAM
-Let's say our RAM size is 4 GB.
-Let's assume each process is of size 4 Kb.
+	
+```
+	Let's say our RAM size is 4 GB.
+	Let's assume each process is of size 4 Kb.
 
-The number of processes that can be placed in RAM 
-= 4Gb/4Kb
-= 2^32 bytes / 2^12 bytes
-= 2^20 	number of processes
+	The number of processes that can be placed in RAM 
+	= 4Gb/4Kb
+	= 2^32 bytes / 2^12 bytes
+	= 2^20 	number of processes
 
-Trivia - 
-1 Kb = 2^10 bytes
-1 Mb = 2^20 bytes
-1 Gb = 2^30 bytes
-1 Tb = 2^40 bytes
-1 byte = 8 bits
+	Trivia - 
+	1 Kb = 2^10 bytes
+	1 Mb = 2^20 bytes
+	1 Gb = 2^30 bytes
+	1 Tb = 2^40 bytes
+	1 byte = 8 bits
 
-4 Gb = 2^2 * 2^30 bytes = 2^32 bytes
-4 Kb = 2^2 * 2^10 bytes = 2^12 bytes
+	4 Gb = 2^2 * 2^30 bytes = 2^32 bytes
+	4 Kb = 2^2 * 2^10 bytes = 2^12 bytes
+
+```
 
 9. Types of Operating systems
+
 	a. Batch operating systems - Degree of multiprogramming = 1
 	b. Multiprogramming OS -  Degree of multiprogramming > 1 [Concurrent processing]
 	c. Multiprocessing OS - More than 1 CPU. Till now we have considered only 1 CPU model. [Parallel processing]
 
-CPU efficiency = Useful time of CPU/Total time of CPU
-Useful time of CPU = time when it is executing processes.
+	CPU efficiency = Useful time of CPU/Total time of CPU
+	Useful time of CPU = time when it is executing processes.
 
-10. A program is also called as Passive entity, a process from that program is also called Active entity. Let's look at the anotomy of a process.
+10. A program is also called as Passive entity, a process from that program is also called Active entity. 
+
+	Let's look at the anotomy of a process.
 
 	a. Every program has a lot of functions, all functions are loaded in RAM.
 	b. The order of function execution is maintained on a STACK.
 	c. All variables initiated at runtime are allocated on a HEAP.
 	d. The block of RAM allocated to each process is called as "Process control block" (PCB)
 
+```
 	Process control block
 	-------------
 	|			|
@@ -116,39 +131,43 @@ Useful time of CPU = time when it is executing processes.
 	|			|
 	-------------
 
+```
 
 11. Let's say there are 3 processes P1, P2 and P3 in ready state, waiting to be executed by the CPU. The Scheduler code in the OS will decide, which process will be executed first by CPU. There are various algorithms based on which the scheduler takes this decision. We will discuss them below - 
+	
 	a. First come first serve algorithm - It says the process which was created first in the RAM will be selected by the CPU to be executed first.
 
-
-	---------
-	|	P1	|
-	|		|						---------
-	---------						|		|
-	|	P2	|		-----------> 	|	CPU |	
-	|		|						|		|
-	---------						---------
-	|	P3	|
-	|		|
-	---------
-
+	```
+		---------
+		|	P1	|
+		|		|						---------
+		---------						|		|
+		|	P2	|		-----------> 	|	CPU |	
+		|		|						|		|
+		---------						---------
+		|	P3	|
+		|		|
+		---------
+	```
 
 	b. Shortest job first algorithm - This algorithm says, the job with the shortest amount of time should be executed first. Let's say, 
 
-	P1 - takes - 5 ns to execute
-	P2 - takes - 3 ns to execute
-	P3 - takes - 1 ns to execute
+		P1 - takes - 5 ns to execute
+		P2 - takes - 3 ns to execute
+		P3 - takes - 1 ns to execute
 
-	---------
-	|	P1	|						CPU
-	|		|						---------
-	---------						|		|
-	|	P2	|		-----------> 	|	P2  |	
-	|		|						|		|
-	---------						---------
-	|	P3	|
-	|		|
-	---------
+	```
+		---------
+		|	P1	|						CPU
+		|		|						---------
+		---------						|		|
+		|	P2	|		-----------> 	|	P2  |	
+		|		|						|		|
+		---------						---------
+		|	P3	|
+		|		|
+		---------
+	```
 
 	Let's say P2 is currently getting executed in CPU, and in the meantime a higher priority task P3 comes, here priority is decided by the process which takes least time to execute. In this case, P2 should be PRE-EMPTIED from CPU and P3 should be run. Once P3 finishes, P2 can be executed, if it is eligible to be executed. But how will be remember how to run P2 from the point at which it was stopped.
 
@@ -166,17 +185,20 @@ Useful time of CPU = time when it is executing processes.
 12. Context of a Process - The Program control block along with the process attributes are collectively called as the "Context of the process" or execution context.
 
 13. Types of scheduler
+	
 	a. Long term scheduler - Decides which processes should be moved from disk to RAM for execution
 	b. Short term scheduler - Decides which process should be moved from RAM to CPU for execution.
 	b. Medium term scheduler - Let's say that there are 4 processes in the CPU. Their priorities are as below. Note that the capacity of RAM is only 4 processes.
 
-	RAM													DISK
-	-----------------									---------
-	P1 - Priority - 1									|	P5	|
-	P2 - Priority - 2		----SWAP OUT P1----->		---------
-	P3 - Priority - 3		<----SWAP IN P5------
-	P4 - Priority - 4
-	-----------------
+	```
+		RAM													DISK
+		-----------------									---------
+		P1 - Priority - 1									|	P5	|
+		P2 - Priority - 2		----SWAP OUT P1----->		---------
+		P3 - Priority - 3		<----SWAP IN P5------
+		P4 - Priority - 4
+		-----------------
+	```
 
 	Let's say a new process P5 with higher priority 5 is created in the disk. In this case, we have to "SWAP OUT" a process from RAM to disk and "SWAP IN" P5 into the RAM. This process is called SWAPPING. This process of SWAPPING is carried out by Medium term scheduler.
 
@@ -186,10 +208,12 @@ Useful time of CPU = time when it is executing processes.
 
 	There are 2 concepts related to time. 5 PM is a "Point in time". But time between 5 PM and 7 PM is "Duration in time". Times associated with a process fall in these 2 categories.
 
-	Trivia - A process can 
-		a. Either get executed (RUNNING)
-		b. Wait for execution (READY)
-		c. Waiting for I/O (I/O WAIT)
+		```
+		Trivia - A process can 
+			a. Either get executed (RUNNING)
+			b. Wait for execution (READY)
+			c. Waiting for I/O (I/O WAIT)
+		```
 
 	Point in time
 		a. Arrival time - Point in time at which the process has arrived from Hard disk to the RAM
@@ -198,7 +222,7 @@ Useful time of CPU = time when it is executing processes.
 	Duration in time
 		c. Turn around time = Completion time - Arrival time, i.e total time spent by the process in the RAM and CPU combined.
 
-
+```
 			      P1	    P2				P1					P3				P1
 			|----------|-----------|----------------------|-------------|--------------|
 		Arrival																	Completion
@@ -219,6 +243,7 @@ Useful time of CPU = time when it is executing processes.
 		Completion time = Waiting time + Burst time + I/O time 
 
 		g. Response time - ****** Revisit later *******
+```
 
 16. Scheduling algorithms
 	
@@ -226,6 +251,7 @@ Useful time of CPU = time when it is executing processes.
 		a. Pre-emptive scheduling algorithm
 		b. Non pre-emptive scheduling algorithm
 
+```
 			---------
 			|	P1	|						CPU
 			|		|						---------
@@ -271,6 +297,7 @@ Useful time of CPU = time when it is executing processes.
 
 		In non pre-emptive algorithms, when P1 finishes execution, P4 will not be picked... 
 
+```
 
 17. Shortest job first scheduling algorithm (SJF)
 	
@@ -278,6 +305,7 @@ Useful time of CPU = time when it is executing processes.
 	b. The process with the shortest burst time will be given higher priority.
 	c. This is a priority based algorithm.
 
+```
 	Example, 
 
 	|-----------|-------------|-----------|
@@ -330,31 +358,35 @@ Useful time of CPU = time when it is executing processes.
 				 = number of process/schedule length
 				 = 5/11
 
+```
+
 18. Shortest remaining time first (SRTF) scheduling algorithm
 
 	a. SRTF is a pre-emptive type of scheduling algorithm. This is the only difference between SJF and SRTF.
 		
-		In SRTF the process which has shortest burst time is give highest priority. If the current executing process has higher remaining burst time, it will be pre-emptied and the one with highest priority will be executed.
+	In SRTF the process which has shortest burst time is give highest priority. If the current executing process has higher remaining burst time, it will be pre-emptied and the one with highest priority will be executed.
 
+```
 		Let's take an example -
 
 
-	|-----------|-------------|-----------|----------------------|
-	|Process ID |Arrival time |Burst time |Remaining burst time  |
-	|-----------|-------------|-----------|----------------------|
-	|	P1		|	0		  | 7		  |   6                  |
-	|	P2		|	1		  |	5		  |   5                  |
-	|	P3		|	2		  |	3		  |   2                  |
-	|	P4		|	3		  |	1		  |   0                  |
-	|	P5		|	4		  |	2		  |   2                  |
-	|   P6      |   5         | 1         |   0                  |
-	|-----------|-------------|-----------|----------------------|
+		|-----------|-------------|-----------|----------------------|
+		|Process ID |Arrival time |Burst time |Remaining burst time  |
+		|-----------|-------------|-----------|----------------------|
+		|	P1		|	0		  | 7		  |   6                  |
+		|	P2		|	1		  |	5		  |   5                  |
+		|	P3		|	2		  |	3		  |   2                  |
+		|	P4		|	3		  |	1		  |   0                  |
+		|	P5		|	4		  |	2		  |   2                  |
+		|   P6      |   5         | 1         |   0                  |
+		|-----------|-------------|-----------|----------------------|
 
 
 	0 <-P1-> 1 <-P2-> 2 <-P3-> 3 <-P4-> 4 <-P3-> 5 <-P3-> 6 <-P6-> 7 <--P5--> 9 <--P2--> 13 <--P1--> 19
 	|--------|--------|--------|--------|--------|--------|--------|----------|-----------|-----------|
 
 	At,
+
 		t = 0, P1 arrives and starts executing
 		
 		t = 1, P2 arrives and it till this point the remaining burst time of P1 is 6, which is higher than P2's burst time. P1 is therefore pre-emptied and P2 starts execution.
@@ -378,26 +410,28 @@ Useful time of CPU = time when it is executing processes.
 		t = 19, P1 finishes.
 
 
-	Now let's compute the Completion time, Turn around time and waiting time for each process.
+		Now let's compute the Completion time, Turn around time and waiting time for each process.
 
-	|-----------|-------------|-----------|--------|----------|------|
-	|Process ID |Arrival time |Burst time | CT     | TAT      | WT   |
-	|-----------|-------------|-----------|--------|----------|------|
-	|	P1		|	0		  | 7		  |   19   |  19      | 12   |
-	|	P2		|	1		  |	5		  |   13   |  12      | 7    |
-	|	P3		|	2		  |	3		  |   6    |  4       | 1    |
-	|	P4		|	3		  |	1		  |   4    |  1       | 0    |
-	|	P5		|	4		  |	2		  |   5    |  5       | 3    |
-	|   P6      |   5         | 1         |   7    |  2       | 1    |
-	|-----------|-------------|-----------|--------|----------|------|
+		|-----------|-------------|-----------|--------|----------|------|
+		|Process ID |Arrival time |Burst time | CT     | TAT      | WT   |
+		|-----------|-------------|-----------|--------|----------|------|
+		|	P1		|	0		  | 7		  |   19   |  19      | 12   |
+		|	P2		|	1		  |	5		  |   13   |  12      | 7    |
+		|	P3		|	2		  |	3		  |   6    |  4       | 1    |
+		|	P4		|	3		  |	1		  |   4    |  1       | 0    |
+		|	P5		|	4		  |	2		  |   5    |  5       | 3    |
+		|   P6      |   5         | 1         |   7    |  2       | 1    |
+		|-----------|-------------|-----------|--------|----------|------|
 
-	## Assuming I/O time of all processes is 0.
+		## Assuming I/O time of all processes is 0.
 
-	*** Completion time (CT) of a pre-emptive algorithm should always be calculated backwards.
-	*** TAT = CT - AT
-	*** WT = TAT - BT
-	*** Schedule length = 19 - 0 = 19
-	*** Throughput = total processes / schedule length = 6 / 19 
+		*** Completion time (CT) of a pre-emptive algorithm should always be calculated backwards.
+		*** TAT = CT - AT
+		*** WT = TAT - BT
+		*** Schedule length = 19 - 0 = 19
+		*** Throughput = total processes / schedule length = 6 / 19 
+
+```
 
 19. Response time of a process is the time that the process has to wait for it to be executed in the CPU for the first time, after it arrives in RAM. SRTF has better response time than SJF. In general, pre-emptive algorithms have a better response time than non-pre-emptive algorithms. 
 
@@ -407,7 +441,7 @@ Useful time of CPU = time when it is executing processes.
 	b. It is a non-pre-emptive scheduling algorithm.
 	c. It is not a priority based scheduling algorithm.
 
-
+```
 	|-----------|-------------|-----------|
 	|Process ID |Arrival time |Burst time |
 	|-----------|-------------|-----------|
@@ -421,6 +455,7 @@ Useful time of CPU = time when it is executing processes.
 	The algorithm is simple, there is no priority assigned to any process based on process properties, rather whichever process comes first in the RAM is selected. Which process arrives at what time in the RAM is not controlled by a process and it is therefore not a process attribute.
 
 	At,
+	
 		t = 0, P1 arrives in the RAM and it is selected to execute.
 
 		t = 4, P1 completes its execution, and by this time P2, P3 and P4 have arrived in the RAM. But P2 was first to arrive amoung them, there P2 executes first.
@@ -449,6 +484,8 @@ Useful time of CPU = time when it is executing processes.
 	|-----------|----------|-----------|--------|----------|------|------|
 
 	*** For pre-emptive algorithms, WT is same as RT (response time)
+
+```
 
 21. FCFS with Context switching
 
