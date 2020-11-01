@@ -80,4 +80,5 @@
 ## Remove later
 ## This one too
 
-## Conflict line 1
+## conflict line 2
+
