@@ -74,11 +74,3 @@
 ## Best engineering principles
 
 - [Link](https://java-design-patterns.com/principles/)
-
-
-
-## Remove later
-## This one too
-
-## conflict line 2
-
