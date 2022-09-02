@@ -464,7 +464,7 @@ Operating systems notes
 	
 		t = 0, P1 arrives in the RAM and it is selected to execute.
 
-		t = 4, P1 completes its execution, and by this time P2, P3 and P4 have arrived in the RAM. But P2 was first to arrive amoung them, there P2 executes first.
+		t = 4, P1 completes its execution, and by this time P2, P3 and P4 have arrived in the RAM. But P2 was first to arrive among them, there P2 executes first.
 
 		t = 7, P2, finishes, P3 is picked.
 
