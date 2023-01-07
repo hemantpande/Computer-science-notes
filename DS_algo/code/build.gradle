@@ -9,9 +9,17 @@ repositories {
     mavenCentral()
 }
 
-//test{
-//    useJUnitPlatform()
-//}
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
 
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
