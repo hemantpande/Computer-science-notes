@@ -26,6 +26,7 @@
 - How TCP works? [Youtube series](https://www.youtube.com/playlist?list=PLW8bTPfXNGdAZIKv-y9v_XLXtEqrPtntm)
 - Waterloo University course [Youtube series](https://www.youtube.com/playlist?list=PLawkBQ15NDEkDJ5IyLIJUTZ1rRM9YQq6N)
 - Mathematical foundations of Networking [Youtube series](https://www.youtube.com/playlist?list=PLawkBQ15NDEkDJ5IyLIJUTZ1rRM9YQq6N)
+- David Bombal [Udemy course](udemy.com/course/complete-networking-fundamentals-course-ccna-start/)
 
 ### University resources
 
